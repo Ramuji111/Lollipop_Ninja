@@ -440,7 +440,7 @@ def title_screen():
     run_types = ['classic', 'segmented speedrun', 'one-shot speedrun']
     map_sets_index = find(map_sets,map_set)
     run_types_index = find(run_types,run_type)
-    menu_options = ['Lollipop Ninja', '', 'Play', 'Level Set: ' + map_set, 'Rules: ' + run_type, 'Srm\'s Website', 'Clear Save', 'Exit']
+    menu_options = ['Lollipop Ninja', '', 'Play', 'Level Set: ' + map_set, 'Rules: ' + run_type, 'My Github', 'Clear Save', 'Exit']
     pointer = 2
     in_menu = True
     hit_zero = False
@@ -483,8 +483,8 @@ def title_screen():
                     sys.exit()
                 if selection == '- Play':
                     in_menu = False
-                if selection == '- Srm\'s Website':
-                    webbrowser.open('https://srmist.edu.in')
+                if selection == '- My Github':
+                    webbrowser.open('https://https://github.com/Ramuji111')
                 if selection == '- Level Set: ' + map_set:
                     map_sets_index += 1
                     if map_sets_index == len(map_sets):
@@ -532,8 +532,8 @@ def title_screen():
                         sys.exit()
                     if selection == '- Play':
                         in_menu = False
-                    if selection == '- Srm\'s Website':
-                        webbrowser.open('https://srmist.edu.in')
+                    if selection == '- My Github':
+                        webbrowser.open('https://github.com/Ramuji111')
                     if selection == '- Level Set: ' + map_set:
                         map_sets_index += 1
                         if map_sets_index == len(map_sets):
@@ -556,7 +556,7 @@ def title_screen():
                         WINDOWHEIGHT = resolutions[resolution_index][1]
                         screen = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT),pygame.RESIZABLE)
                     
-        menu_options = ['Lollipop Ninja', '', 'Play', 'Level Set: ' + map_set, 'Rules: ' + run_type, 'Resolution: ' + str(resolutions[resolution_index][0]) + 'x' + str(resolutions[resolution_index][1]), 'Srm\'s Website', 'Clear Save', 'Exit']
+        menu_options = ['Lollipop Ninja', '', 'Play', 'Level Set: ' + map_set, 'Rules: ' + run_type, 'Resolution: ' + str(resolutions[resolution_index][0]) + 'x' + str(resolutions[resolution_index][1]), 'My Github', 'Clear Save', 'Exit']
         menu_options[pointer] = '- ' + menu_options[pointer]
         y = 0
         for option in menu_options:
@@ -566,7 +566,7 @@ def title_screen():
             ShowText('Tilt stick L/R for selection(up/down unregistered)',110,4,1,245,Font_0,Display,overflow='normal')
         if WINDOWWIDTH > 900:
             ShowText('You need a single beefy CPU core to run the game\nat this resolution.',110,64,1,245,Font_0,Display,overflow='normal')
-        ShowText('Made by Ramuji.D and Akash Sasikumar',4,188,1,245,Font_0,Display,overflow='normal')
+        ShowText('Made by Ramuji.D',4,188,1,245,Font_0,Display,overflow='normal')
         ratio = WINDOWWIDTH/WINDOWHEIGHT
         if ratio < 1.5:
             width = WINDOWWIDTH
@@ -1422,7 +1422,7 @@ while True:
     if run_type == 'one-shot speedrun':
         extra = '\nOne-Shot Speedrun\nframe count: ' + str(speedrun_score)
         extra += '\napprox. time: ' + frames_to_time(speedrun_score)
-    ShowText('Lollipop Ninja\n\nMade by Ramuji.D and Akash Sasikumar \\nPlease enjoy the game\n' + extra,4,4,1,245,Font_0,Display,overflow='normal')
+    ShowText('Lollipop Ninja\n\nMade by Ramuji.D \\nPlease enjoy the game\n' + extra,4,4,1,245,Font_0,Display,overflow='normal')
     Display.blit(expression_index['twitter'],(4,184))
     for event in pygame.event.get():
         if event.type == QUIT:
