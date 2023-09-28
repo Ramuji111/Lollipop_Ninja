@@ -133,8 +133,6 @@ class entity(object):
 global animation_database
 animation_database = {}
 
-# a sequence looks like [[0,1],[1,1],[2,1],[3,1],[4,2]]
-# the first numbers are the image name(as integer), while the second number shows the duration of it in the sequence
 def animation_sequence(sequence,base_path,colorkey=(255,255,255),transparency=255):
     global animation_database
     result = []
@@ -148,10 +146,6 @@ def animation_sequence(sequence,base_path,colorkey=(255,255,255),transparency=25
             result.append(image_id)
     return result
 
-# attributes so far are: continuous and loop
-# continuous - pauses on last frame in animation
-# loop - goes to the beginning after the last frame
-# if neither of those are present, then the animation deletes itself
 class animation(object):
 
     def __init__(self,sequence,base_path,attributes=[],colorkey=(255,255,255),transparency=255):
@@ -175,7 +169,7 @@ class animation(object):
     def start(self,x,y):
         self.key_num += 1
         self.active_animations[self.key_num] = [x,y,0,None]
-        return self.key_num # returns a key for the current animation, it's used to handle it
+        return self.key_num
 
     def play(self,key,surf,flip=False,show=True,offset=[0,0],transparency=255): # play both displays and handles the frame
         global animation_database
@@ -212,8 +206,7 @@ class animation(object):
         self.active_animations[key][0] = x
         self.active_animations[key][1] = y
 
-    # not using .copy() in the function when setting a var to the output will make the var the same as the change
-    def next_image(self,key,update=None): # can be used to check the next image/change it
+    def next_image(self,key,update=None): 
         self.active_animations[key][3] = update
         return animation_database[self.sequence[self.active_animations[key][2]]]
         
